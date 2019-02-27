@@ -20,6 +20,7 @@ class App extends Component {
 
   onSubmit = event => {
     event.preventDefault();
+    event.target.reset();
     this.setState({
       input: "",
       list: [...this.state.list, this.state.input]
@@ -40,12 +41,17 @@ class App extends Component {
             Add
           </button>
         </form>
-        <h3>Total list items = {this.state.list.length}</h3>
+        <p>0 remaining out of {this.state.list.length}</p>
         <ul>
           {this.state.list.map((item, index) => (
             <li>{item}</li>
           ))}
         </ul>
+        <style>
+          {`.is-done {
+          text-decoration: line-through;
+        }`}
+        </style>
       </div>
     );
   }
